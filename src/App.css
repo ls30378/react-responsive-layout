@@ -39,3 +39,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.albania {
+  --red: #f00;
+  --black: #000;
+}
