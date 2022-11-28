@@ -4,10 +4,10 @@ export interface ResponsiveBoxProps {
   height: number;
   width: number;
   boxClass?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-function ResponsiveBox(props: ResponsiveBoxProps) {
+export function ResponsiveBox(props: ResponsiveBoxProps) {
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
     return { innerWidth, innerHeight };
@@ -23,23 +23,34 @@ function ResponsiveBox(props: ResponsiveBoxProps) {
   return (
     <div
       style={{
-        position: "relative",
-        height: props.height,
-        minHeight: props.height,
-        width: props.width,
-        minWidth: props.width,
-        transform: `scale(${
-          windowSize.innerWidth / props.width >
-          windowSize.innerHeight / props.height
-            ? windowSize.innerHeight / props.height
-            : windowSize.innerWidth / props.width
-        } )`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minWidth: "100vw",
+        maxWidth: "100vw",
+        minHeight: "100vh",
+        maxHeight: "100vh",
+        overflow: "hidden",
       }}
-      className={props.boxClass}
     >
-      {props.children}
+      <div
+        style={{
+          position: "relative",
+          height: props.height,
+          minHeight: props.height,
+          width: props.width,
+          minWidth: props.width,
+          transform: `scale(${
+            windowSize.innerWidth / props.width >
+            windowSize.innerHeight / props.height
+              ? windowSize.innerHeight / props.height
+              : windowSize.innerWidth / props.width
+          } )`,
+        }}
+        className={props.boxClass}
+      >
+        {props.children}
+      </div>
     </div>
   );
 }
-
-export default ResponsiveBox;

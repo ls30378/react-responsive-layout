@@ -19,7 +19,9 @@
     "declarationMap": true,
     "baseUrl": ".",
     "paths": {
-      "react-vite-library": ["src/component/index.ts"]
+      "react-responsive-layour": ["src/components/index.ts"]
+      // "@/*": ["src/components/index.ts"]
+      // "@/*": ["./src/*"]
     },
     "typeRoots": ["node_modules/@types", "src/component/index.d.ts"]
   },
